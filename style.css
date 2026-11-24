@@ -54,6 +54,17 @@ body {
     line-height: 1.72;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("assets/images/fooldal/hatterkep-vegsobucsu.webp") center / cover no-repeat;
+    opacity: 0.14;
+    z-index: -1;
+    pointer-events: none;
 }
 
 img {
@@ -311,15 +322,41 @@ a {
 }
 
 /* ==========================================================================
-   HERO (Warm, Serene, Bright Beige + Candle Accent Window, NOT gloomy)
+   HERO (Warm, Serene Sunlit Forest Background)
    ========================================================================== */
 .hero {
-    background: linear-gradient(135deg, var(--bg-beige) 0%, #fbf7f0 55%, #f2e8da 100%);
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-beige);
     border-bottom: 1px solid var(--border-warm);
-    padding: 68px 0 76px;
+    padding: 64px 0 74px;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        105deg,
+        rgba(251, 247, 240, 0.90) 0%,
+        rgba(251, 247, 240, 0.78) 54%,
+        rgba(243, 236, 225, 0.44) 100%
+    );
+    z-index: 1;
 }
 
 .hero-grid {
+    position: relative;
+    z-index: 2;
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
     gap: 48px;
@@ -333,21 +370,22 @@ a {
     padding: 7px 16px;
     border-radius: var(--radius-pill);
     background: #ffffff;
-    border: 1px solid rgba(214, 147, 50, 0.45);
+    border: 1px solid rgba(214, 147, 50, 0.55);
     color: var(--brown);
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     margin-bottom: 18px;
+    box-shadow: 0 4px 12px rgba(62, 33, 18, 0.06);
 }
 
 .hero-title {
     font-family: var(--font-serif);
-    font-size: clamp(2.1rem, 3.8vw, 3.35rem);
-    line-height: 1.15;
+    font-size: clamp(1.78rem, 3.1vw, 2.65rem);
+    line-height: 1.18;
     color: var(--text-ink);
-    margin: 0 0 16px 0;
+    margin: 0 0 18px 0;
 }
 
 .hero-title span {
@@ -401,18 +439,22 @@ a {
     border-radius: 18px;
 }
 
-/* Smaller framed Candle Video (kept per Anita's request, warm & tasteful) */
+/* Prominent framed Candle Video above the Quote */
+.candle-showcase {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 26px;
+}
+
 .candle-frame {
-    position: absolute;
-    left: -12px;
-    bottom: -16px;
-    width: 142px;
-    height: 174px;
-    border-radius: 18px;
+    position: relative;
+    width: 170px;
+    height: 208px;
+    border-radius: 20px;
     overflow: hidden;
     border: 2.5px solid var(--gold-light);
     background: var(--brown-deep);
-    box-shadow: 0 14px 32px rgba(44, 22, 11, 0.32);
+    box-shadow: 0 14px 36px rgba(214, 147, 50, 0.25), 0 8px 24px rgba(44, 22, 11, 0.22);
 }
 
 .candle-frame video {
@@ -427,20 +469,21 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 14px 8px 6px;
-    background: linear-gradient(transparent, rgba(30, 14, 7, 0.85));
+    padding: 16px 10px 8px;
+    background: linear-gradient(transparent, rgba(30, 14, 7, 0.88));
     color: var(--gold-champagne);
-    font-size: 0.7rem;
-    font-weight: 600;
+    font-size: 0.76rem;
+    font-weight: 700;
     text-align: center;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 /* ==========================================================================
    ABOUT & QUOTE
    ========================================================================== */
 .about-section {
-    background: var(--bg-white);
+    background: rgba(255, 255, 255, 0.86);
 }
 
 .about-card {
@@ -496,7 +539,7 @@ a {
    SERVICES
    ========================================================================== */
 .services-section {
-    background: var(--bg-beige);
+    background: rgba(243, 236, 225, 0.86);
 }
 
 .services-grid {
@@ -570,7 +613,7 @@ a {
    ANGYALI UZENET
    ========================================================================== */
 .angelic-section {
-    background: var(--bg-white);
+    background: rgba(255, 255, 255, 0.86);
 }
 
 .angelic-card {
@@ -612,7 +655,7 @@ a {
    BLOG
    ========================================================================== */
 .blog-section {
-    background: var(--bg-ivory);
+    background: rgba(251, 248, 243, 0.86);
 }
 
 .blog-grid {
@@ -676,7 +719,7 @@ a {
    CONTACT
    ========================================================================== */
 .contact-section {
-    background: var(--bg-beige);
+    background: rgba(243, 236, 225, 0.88);
 }
 
 .contact-grid {
@@ -802,6 +845,19 @@ a {
 .footer-links a:hover,
 .footer-links button:hover {
     color: var(--gold-light);
+}
+
+.btn-footer-fb {
+    background: rgba(240, 207, 133, 0.12);
+    border-color: rgba(232, 184, 90, 0.65);
+    color: var(--gold-champagne);
+    padding: 8px 18px;
+    font-size: 0.84rem;
+}
+
+.btn-footer-fb:hover {
+    background: var(--gold-light);
+    color: var(--brown-deep);
 }
 
 .footer-link-btn {
@@ -937,12 +993,6 @@ a {
     }
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
-    }
-    .candle-frame {
-        left: 8px;
-        bottom: -10px;
-        width: 120px;
-        height: 148px;
     }
 }
 

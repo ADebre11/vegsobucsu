@@ -47,10 +47,12 @@
         const h = SITE_DATA.hero;
         el("hero-mount").innerHTML = `
             <div class="hero">
+                <img src="${h.bgImage}" alt="" class="hero-bg" aria-hidden="true" />
+                <div class="hero-overlay"></div>
                 <div class="container hero-grid">
                     <div>
-                        <div class="hero-badge">${h.badge}</div>
                         <h1 class="hero-title">${h.title}</h1>
+                        <div class="hero-badge">${h.badge}</div>
                         <p class="hero-subtitle">${h.subtitle}</p>
                         <div class="hero-ctas">
                             <a href="${SITE_DATA.brand.phoneHref}" class="btn btn-brown">☎ ${h.primaryCta}</a>
@@ -65,10 +67,6 @@
                         <div class="hero-portrait-card">
                             <img src="${h.portrait}" alt="${SITE_DATA.brand.name} polgári búcsúztató" />
                         </div>
-                        <div class="candle-frame" aria-label="${h.candleLabel}">
-                            <video src="${h.candleVideo}" autoplay loop muted playsinline preload="metadata"></video>
-                            <div class="candle-caption">${h.candleLabel}</div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -77,10 +75,17 @@
 
     function renderAbout() {
         const a = SITE_DATA.about;
+        const h = SITE_DATA.hero;
         el("about-mount").innerHTML = `
             <div class="about-section section-pad">
                 <div class="container">
                     <div class="about-card">
+                        <div class="candle-showcase">
+                            <div class="candle-frame" aria-label="${h.candleLabel}">
+                                <video src="${h.candleVideo}" autoplay loop muted playsinline preload="metadata"></video>
+                                <div class="candle-caption">${h.candleLabel}</div>
+                            </div>
+                        </div>
                         <div class="about-quote">
                             <span class="eyebrow">${a.eyebrow}</span>
                             <blockquote>${a.quote}</blockquote>
@@ -103,7 +108,7 @@
                     <div class="section-header">
                         <span class="eyebrow">Szolgáltatások</span>
                         <h2 class="section-title">Személyes és méltó elköszönés</h2>
-                        <p class="section-subtitle">Budapesten, Pest vármegyében és az ország egész területén – egyéni igényekhez igazítva.</p>
+                        <p class="section-subtitle">Budapesten, Pest megyében és az ország egész területén – egyéni igényekhez igazítva.</p>
                     </div>
                     <div class="services-grid">
                         ${SITE_DATA.services
@@ -263,19 +268,25 @@
 
     function renderFooter() {
         const b = SITE_DATA.brand;
+        const fbHref = b.facebook || "#contact-mount";
+        const fbAttrs = b.facebook ? 'target="_blank" rel="noopener noreferrer"' : 'title="Facebook oldal"';
         el("footer-mount").innerHTML = `
             <div class="footer">
                 <div class="container">
                     <div class="footer-grid">
                         <div>
                             <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
-                                <img src="${b.logo}" alt="${b.name}" style="height:48px;width:auto;" />
+                                <img src="${b.logo}" alt="${b.name}" style="height:54px;width:auto;" />
                                 <div>
                                     <div style="font-family:var(--font-serif);font-size:1.25rem;" class="gold-text">${b.name}</div>
                                     <div style="font-size:0.78rem;color:var(--gold-champagne);letter-spacing:0.1em;text-transform:uppercase;">${b.subtitle}</div>
                                 </div>
                             </div>
-                            <p style="margin:0;font-size:0.88rem;">„Minden élet egyedi történet, minden búcsú különleges pillanat.”</p>
+                            <p style="margin:0 0 14px 0;font-size:0.88rem;">„Minden élet egyedi történet, minden búcsú különleges pillanat.”</p>
+                            <a href="${fbHref}" ${fbAttrs} class="btn btn-footer-fb" aria-label="Facebook oldal">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+                                <span>Facebook</span>
+                            </a>
                         </div>
                         <div>
                             <h4 style="color:var(--gold-champagne);margin:0 0 12px 0;font-size:0.95rem;">Menü</h4>
@@ -288,7 +299,6 @@
                             <ul class="footer-links">
                                 <li><a href="${b.phoneHref}">Telefon / Viber: ${b.phone}</a></li>
                                 <li><a href="mailto:${b.email}">${b.email}</a></li>
-                                <li><a href="https://szertartasmester.hu" target="_blank" rel="noopener noreferrer">Esküvői szertartásvezetés</a></li>
                                 <li><button class="footer-link-btn" data-legal="aszf">ÁSZF</button></li>
                                 <li><button class="footer-link-btn" data-legal="impresszum">Impresszum</button></li>
                             </ul>
