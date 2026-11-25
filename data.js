@@ -217,6 +217,7 @@ const SITE_DATA = {
         title: "Elérhetőségek és egyeztetés",
         subtitle:
             "További információért vagy árajánlatért keressen bizalommal telefonon vagy Viber üzenetben minden nap 8:00 és 20:00 óra között. Amennyiben nem tudom felvenni, visszahívom.",
+        web3formsKey: "592ae639-3827-4289-aad5-4dfd78bf9c9c",
     },
     legal: {
         aszf: [
