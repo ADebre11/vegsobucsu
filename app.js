@@ -415,16 +415,29 @@
     function openBlogModal(blogId) {
         const b = SITE_DATA.blogs.find((item) => item.id === blogId);
         if (!b) return;
+        const bodyHtml = Array.isArray(b.blocks)
+            ? b.blocks
+                  .map((blk) => {
+                      if (blk.type === "h3") return `<h3>${blk.text}</h3>`;
+                      if (blk.type === "ul") {
+                          return `<ul class="blog-inline-list">${blk.items.map((it) => `<li>${it}</li>`).join("")}</ul>`;
+                      }
+                      if (blk.type === "img") {
+                          return `<figure class="blog-inline-figure"><img src="${blk.src}" alt="${blk.alt || b.title}" class="blog-inline-img" loading="lazy" /></figure>`;
+                      }
+                      return `<p>${blk.text}</p>`;
+                  })
+                  .join("")
+            : `${b.sections.map((sec) => `<h3>${sec.heading}</h3><p>${sec.body}</p>`).join("")}${
+                  b.gallery && b.gallery.length
+                      ? `<div class="modal-gallery">${b.gallery.map((g) => `<img src="${g}" alt="${b.title}" />`).join("")}</div>`
+                      : ""
+              }`;
         openModal(`
             <span class="eyebrow">${b.date}</span>
             <h2>${b.title}</h2>
-            <img src="${b.cover}" alt="${b.title}" style="width:100%;max-height:320px;object-fit:cover;border-radius:16px;margin:12px 0 20px;" />
-            ${b.sections.map((sec) => `<h3>${sec.heading}</h3><p>${sec.body}</p>`).join("")}
-            ${
-                b.gallery.length
-                    ? `<div class="modal-gallery">${b.gallery.map((g) => `<img src="${g}" alt="${b.title}" />`).join("")}</div>`
-                    : ""
-            }
+            <img src="${b.cover}" alt="${b.title}" style="width:100%;max-height:300px;object-fit:cover;border-radius:16px;margin:12px 0 20px;" />
+            ${bodyHtml}
         `);
     }
 
