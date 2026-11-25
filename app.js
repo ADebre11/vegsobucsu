@@ -64,6 +64,10 @@
                         </div>
                     </div>
                     <div class="hero-visual-stack">
+                        <div class="candle-frame" aria-label="${h.candleLabel}">
+                            <video src="${h.candleVideo}" autoplay loop muted playsinline preload="metadata"></video>
+                            <div class="candle-caption">${h.candleLabel}</div>
+                        </div>
                         <div class="hero-portrait-card">
                             <img src="${h.portrait}" alt="${SITE_DATA.brand.name} polgári búcsúztató" />
                         </div>
@@ -75,17 +79,10 @@
 
     function renderAbout() {
         const a = SITE_DATA.about;
-        const h = SITE_DATA.hero;
         el("about-mount").innerHTML = `
             <div class="about-section section-pad">
                 <div class="container">
                     <div class="about-card">
-                        <div class="candle-showcase">
-                            <div class="candle-frame" aria-label="${h.candleLabel}">
-                                <video src="${h.candleVideo}" autoplay loop muted playsinline preload="metadata"></video>
-                                <div class="candle-caption">${h.candleLabel}</div>
-                            </div>
-                        </div>
                         <div class="about-quote">
                             <span class="eyebrow">${a.eyebrow}</span>
                             <blockquote>${a.quote}</blockquote>
@@ -311,6 +308,8 @@
         const b = SITE_DATA.brand;
         const fbHref = b.facebook || "#contact-mount";
         const fbAttrs = b.facebook ? 'target="_blank" rel="noopener noreferrer"' : 'title="Facebook oldal"';
+        const ttHref = b.tiktok || "#footer-mount";
+        const ttAttrs = b.tiktok ? 'target="_blank" rel="noopener noreferrer"' : 'title="TikTok oldal hamarosan"';
         el("footer-mount").innerHTML = `
             <div class="footer">
                 <div class="container">
@@ -324,10 +323,16 @@
                                 </div>
                             </div>
                             <p style="margin:0 0 14px 0;font-size:0.88rem;">„Minden élet egyedi történet, minden búcsú különleges pillanat.”</p>
-                            <a href="${fbHref}" ${fbAttrs} class="btn btn-footer-fb" aria-label="Facebook oldal">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg>
-                                <span>Facebook</span>
-                            </a>
+                            <div style="display:flex;flex-wrap:wrap;gap:10px;">
+                                <a href="${fbHref}" ${fbAttrs} class="btn btn-footer-fb" aria-label="Facebook oldal">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+                                    <span>Facebook</span>
+                                </a>
+                                <a href="${ttHref}" ${ttAttrs} class="btn btn-footer-fb" aria-label="TikTok oldal">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+                                    <span>TikTok</span>
+                                </a>
+                            </div>
                         </div>
                         <div>
                             <h4 style="color:var(--gold-champagne);margin:0 0 12px 0;font-size:0.95rem;">Menü</h4>

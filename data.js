@@ -8,6 +8,7 @@ const SITE_DATA = {
         phoneHref: "tel:+36703354440",
         email: "anita@vegsobucsu.hu",
         facebook: "https://www.facebook.com/profile.php?id=61595665064776",
+        tiktok: "",
         hours: "Minden hétköznap és hétvégén 8:00 – 20:00",
         location: "Budapest, Pest megye és országosan",
     },
