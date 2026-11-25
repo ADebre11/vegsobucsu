@@ -164,8 +164,7 @@
                 <div class="container">
                     <div class="section-header">
                         <span class="eyebrow">Blog & Útmutatók</span>
-                        <h2 class="section-title">Gondolatok az elmúlásról és a búcsúról</h2>
-                        <p class="section-subtitle">Gyakorlati segítségek és lelki támasz a nehéz időszakokra.</p>
+                        <h2 class="section-title">Érdekességek, gondolatok a végső búcsú és az emlékezés jegyében</h2>
                     </div>
                     <div class="blog-grid">
                         ${SITE_DATA.blogs
