@@ -457,8 +457,23 @@
         `);
     }
 
+    const isEditable = (t) => t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA");
+
     document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") closeModal();
+        if (!isEditable(e.target) && (e.ctrlKey || e.metaKey)) {
+            if (["c", "x", "u", "s", "a"].includes(e.key.toLowerCase())) e.preventDefault();
+        }
+    });
+
+    ["contextmenu", "copy", "cut"].forEach((evt) => {
+        document.addEventListener(evt, (e) => {
+            if (!isEditable(e.target)) e.preventDefault();
+        });
+    });
+
+    document.addEventListener("dragstart", (e) => {
+        if (e.target && e.target.tagName === "IMG") e.preventDefault();
     });
 
     renderNavbar();

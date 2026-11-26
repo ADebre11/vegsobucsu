@@ -55,6 +55,14 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     position: relative;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+input,
+textarea {
+    -webkit-user-select: text;
+    user-select: text;
 }
 
 body::before {
@@ -70,6 +78,9 @@ body::before {
 img {
     max-width: 100%;
     display: block;
+    -webkit-user-drag: none;
+    user-drag: none;
+    -webkit-touch-callout: none;
 }
 
 a {
@@ -609,6 +620,11 @@ a {
     height: 100%;
     object-fit: cover;
     transition: transform 0.35s ease;
+}
+
+.service-img-wrap img[src*="polgari-bucsuztato"] {
+    object-fit: contain;
+    background: #050505;
 }
 
 .service-card:hover .service-img-wrap img {
