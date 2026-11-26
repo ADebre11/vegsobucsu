@@ -173,13 +173,13 @@
                     <div class="blog-grid">
                         ${SITE_DATA.blogs
                             .map(
-                                (b) => `
-                            <article class="blog-card">
+                                (b, idx) => `
+                            <article class="blog-card${idx === 0 ? " blog-card-latest" : ""}">
                                 <div class="blog-cover">
                                     <img src="${b.cover}" alt="${b.title}" loading="lazy" />
+                                    ${idx === 0 ? `<span class="blog-new-badge">ÚJ!</span>` : ""}
                                 </div>
                                 <div class="blog-body">
-                                    <div class="blog-date">${b.date}</div>
                                     <h3>${b.title}</h3>
                                     <p class="blog-excerpt">${b.excerpt}</p>
                                     <div>
@@ -440,8 +440,9 @@
                       ? `<div class="modal-gallery">${b.gallery.map((g) => `<img src="${g}" alt="${b.title}" />`).join("")}</div>`
                       : ""
               }`;
+        const isLatest = SITE_DATA.blogs[0] && SITE_DATA.blogs[0].id === b.id;
         openModal(`
-            <span class="eyebrow">${b.date}</span>
+            ${isLatest ? `<span class="blog-new-pill">ÚJ BEJEGYZÉS</span>` : ""}
             <h2>${b.title}</h2>
             <img src="${b.cover}" alt="${b.title}" style="width:100%;max-height:300px;object-fit:cover;border-radius:16px;margin:12px 0 20px;" />
             ${bodyHtml}
