@@ -23,6 +23,7 @@ const SITE_DATA = {
     hero: {
         title: "Személyre szabott, <span>lélekmelengető</span> és színvonalas búcsúztatói szolgáltatás",
         badge: "Polgári búcsúztató * Okleveles szertartásvezető",
+        badgeLines: ["Polgári búcsúztató", "Okleveles szertartásvezető"],
         subtitle:
             "Tisztelettel üdvözlöm! Kérem, fogadja részvétemet!<br/>Debreczeni Anita vagyok, polgári búcsúztató.<br/>Személyre szabott, méltó polgári búcsúztatást vállalok Budapesten, Pest megyében és országosan – szívvel, lélekkel, empátiával és odafigyeléssel.",
         bgImage: "assets/images/fooldal/hatterkep-vegsobucsu.webp",

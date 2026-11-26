@@ -45,6 +45,10 @@
 
     function renderHero() {
         const h = SITE_DATA.hero;
+        const badgeHtml = Array.isArray(h.badgeLines)
+            ? `<span>${h.badgeLines[0]}</span><span class="hero-badge-sep" aria-hidden="true">*</span><span>${h.badgeLines[1]}</span>`
+            : h.badge;
+
         el("hero-mount").innerHTML = `
             <div class="hero">
                 <img src="${h.bgImage}" alt="" class="hero-bg" aria-hidden="true" />
@@ -52,7 +56,7 @@
                 <div class="container hero-grid">
                     <div>
                         <h1 class="hero-title">${h.title}</h1>
-                        <div class="hero-badge">${h.badge}</div>
+                        <div class="hero-badge">${badgeHtml}</div>
                         <p class="hero-subtitle">${h.subtitle}</p>
                         <div class="hero-ctas">
                             <a href="${SITE_DATA.brand.phoneHref}" class="btn btn-brown">☎ ${h.primaryCta}</a>
@@ -90,7 +94,10 @@
                         </div>
                         <div class="about-body">
                             ${a.paragraphs.map((p) => `<p>${p}</p>`).join("")}
-                            <div class="about-callout">${a.callout}</div>
+                            <div class="about-callout">
+                                <span class="about-callout-tag">Fontos tudni</span>
+                                <p>${a.callout.replace(/^Fontos tudni:\s*/i, "")}</p>
+                            </div>
                         </div>
                     </div>
                 </div>

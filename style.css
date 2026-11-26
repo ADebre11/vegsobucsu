@@ -538,13 +538,34 @@ a {
 }
 
 .about-callout {
-    margin-top: 22px;
-    padding: 16px 22px;
-    border-radius: 14px;
-    background: var(--bg-beige);
-    border-left: 4px solid var(--gold);
-    font-weight: 600;
-    color: var(--brown);
+    margin-top: 26px;
+    padding: 20px 24px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(214, 147, 50, 0.16) 0%, rgba(255, 250, 240, 0.96) 100%);
+    border: 1.5px solid rgba(214, 147, 50, 0.65);
+    border-left: 6px solid var(--gold-dark);
+    box-shadow: 0 10px 26px rgba(173, 108, 22, 0.14);
+}
+
+.about-callout-tag {
+    display: inline-block;
+    padding: 4px 13px;
+    border-radius: var(--radius-pill);
+    background: var(--gold-dark);
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.about-callout p {
+    margin: 0;
+    font-size: 1.08rem;
+    font-weight: 700;
+    line-height: 1.55;
+    color: var(--text-ink);
 }
 
 /* ==========================================================================
@@ -1071,6 +1092,16 @@ a {
     }
     .hero {
         padding: 28px 0 48px;
+    }
+    .hero-badge {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3px;
+        line-height: 1.35;
+        padding: 8px 16px;
+    }
+    .hero-badge-sep {
+        display: none;
     }
     .hero-visual-stack {
         order: -1;
