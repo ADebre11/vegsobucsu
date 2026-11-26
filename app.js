@@ -359,7 +359,10 @@
                     </div>
                     <div class="footer-bottom">
                         <span>© ${new Date().getFullYear()} Debreczeni Anita – Minden jog fenntartva.</span>
-                        <span>Design & Fejlesztés: Borbás Webdesign</span>
+                        <a href="https://borbaswebdesign.hu/" target="_blank" rel="noopener noreferrer" class="footer-creator" aria-label="Készítette: Borbás Webdesign">
+                            <span class="footer-creator-label">Készítette:</span>
+                            <img src="assets/borbas-webdesign-logo-white.png" alt="Borbás Webdesign" class="footer-creator-logo" />
+                        </a>
                     </div>
                 </div>
             </div>
